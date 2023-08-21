@@ -1,0 +1,35 @@
+{%extends 'base.html' %}
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-dark alert-warning fade show" role="alert">
+  <strong>{{ message }}</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+	
+{% endfor %}
+
+<h1>Blog Posts</h1>
+
+<br/>
+
+{% for p in post %}
+<div class="shadow p-3 mb-5 bg-white rounded">
+	<h2><a href="{{ url_for('view_post',id=p.id) }}" style="color: orange;">{{ p.title }}</a><br/></h2>
+	<strong>By: {{ p.poster.name }}<br/></strong>
+	<strong>{{ p.date_posted }}<br/></strong>
+	{{ p.content.split()[:20]|join(' ') |safe }}<br/></br>
+
+	<a href="{{ url_for('view_post',id=p.id) }}" class="btn btn-outline-secondary btn-sm">View post</a>
+
+	{% if post.poster_id == current_user.id %}
+	<a href="{{ url_for('edit_post',id=p.id) }}" class="btn btn-outline-secondary btn-sm">Edit post</a>
+	<a href="{{ url_for('delete_post', id = p.id) }}" class="btn btn-outline-secondary btn-sm">Delete</a>
+	{% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}
+

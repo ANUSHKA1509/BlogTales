@@ -1,0 +1,55 @@
+<style>
+  .nav-link {
+    font-size: 25px;
+    color: darkorange !important;
+  }
+
+      .form-control {
+    width: 50%;
+  }
+  
+  .btn {
+    background-color: darkorange;
+    border-color: darkorange;
+    color: white !important;
+    font-weight: bold;
+  }
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{url_for('home')}}" style="font-weight: bold; font-size: 50px; color: darkorange;">
+  <img src="/static/images/b.jpg" width="70" height="70" class="d-inline-block align-top" alt="">
+    BlogTales</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    {% if current_user.is_authenticated %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+      </li> 
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('add_post') }}">Add Post</a>
+      </li> 
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('posts') }}">Posts</a>
+      </li> 
+
+      <a class="btn btn-outline-danger my-2 my-sm-0" href="{{ url_for('logout') }}">LogOut</a>
+
+      
+     
+    </ul>
+    <form method="POST" action="{{ url_for('search')}}" class="d-flex">
+        {{ form.hidden_tag() }}
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search", name="searched">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    {% endif %}
+    </form>
+  </div>
+</nav>

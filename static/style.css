@@ -1,0 +1,19 @@
+  .btn {
+    background-color: darkorange;
+    border-color: darkorange;
+    color: white !important;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  h1 {
+	color: darkorange !important;
+	font-size:40px;
+}
+
+<style>
+    .alert-warning {
+        background-color: orange;
+    }
+</style>

@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  h1 {
+    font-weight: bold;
+    color: darkorange;
+  }
+  
+  p {
+    font-size: 25px;
+  }
+
+  .container {
+  
+    align-items: center;
+  }
+  .register-button {
+        margin-right: 10px;
+    }
+  .login-button {
+        margin-left: 10px;
+    }
+
+    .images {
+        float: right;
+    }
+    
+
+
+</style>
+
+<div class="container">
+<h1>Hello, we're BlogTales</h1>
+<p> The most-loved social blogging platform!</p>
+
+<a href="{{ url_for('register')}}" class="btn btn-outline-success my-2 my-sm-0 register-button" type="submit">Register</a>
+<a href="{{ url_for('login')}}" class="btn btn-outline-success my-2 my-sm-0 login-button" type="submit">LogIn</a>
+
+<div class="images">
+  <img src="static/images/img1.png" width="500" height="500" >
+  
+        
+        
+    </div>
+
+</div>
+
+{% endblock %}
